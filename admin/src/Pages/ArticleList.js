@@ -1,12 +1,21 @@
 import React,{useState,useEffect} from 'react';
 // import '../static/css/ArticleList.css'
-import { List ,Row ,Col , Modal ,message ,Button,Switch} from 'antd';
+import { List ,Row ,Col,Button } from 'antd';
 import axios from 'axios'
 import  servicePath  from '../config/apiUrl'
-const { confirm } = Modal;
+// const { confirm } = Modal;
 
 function ArticleList(props){
   const [list,setList]=useState([])
+  // 获取文章列表
+  const getList =()=> {
+    axios.post(servicePath.getArticleList).then((res) => {
+      setList(res.data.results)
+    })
+  }
+  useEffect(()=>{
+    getList()
+  },[])
   return (
     <div>
       <List
@@ -54,10 +63,8 @@ function ArticleList(props){
             <Col span={3}>
               {item.view_count}
             </Col>
-
             <Col span={4}>
               <Button type="primary" >修改</Button>&nbsp;
-
               <Button >删除 </Button>
             </Col>
           </Row>

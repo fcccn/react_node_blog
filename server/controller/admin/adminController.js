@@ -56,9 +56,23 @@ const updateArticle = (sql, res) => {
     }
   })
 }
+const getArticleList = (sql, res) => {
+  return query(sql, function(err, rows){
+    if (err) {
+      res.send(err)
+    } else {
+      let resultSuccess = {}
+      resultSuccess.error = 0
+      resultSuccess.message = '文章列表 请求成功'
+      resultSuccess.results = rows
+      res.json(resultSuccess)
+    }
+  })
+}
 module.exports = {
   checkLogin,
   getTypeInfo,
   addArticle,
-  updateArticle
+  updateArticle,
+  getArticleList
 }
