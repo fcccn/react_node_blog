@@ -9,3 +9,8 @@
     因为Blog的前台需要SEO操作，所以我们一定会选用Next.js框架来辅助我们开发。
     然后减少CSS和各种组件的重复开发，选用阿里的Ant Desgin来作为UI交互库。
     后台主要采用node+express+mysql，为了学习一些服务端的知识。
+
+文件说明：
+admin: 前端-后台
+blog: 前端-前台
+server: 后端
